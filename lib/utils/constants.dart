@@ -35,4 +35,9 @@ const importHeadline = 'Import your file here';
 const emptyFileLabel = 'No file chosen';
 
 // Recipes Page
+const recipeAppBarTitle = 'New Recipe';
 const addRecipeIcon = Icon(Ionicons.bulb_outline);
+const recipeNameHelperText = 'Recipe Name';
+const recipeSaveButtonText = 'Save New Recipe';
+const recipeDropdownHintText = ' Add Ingredient ';
+const recipeDropdownIcon = Icon(Ionicons.add_circle_outline);

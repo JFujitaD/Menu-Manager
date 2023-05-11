@@ -19,4 +19,10 @@ final primaryTheme = ThemeData(
   cardTheme: const CardTheme(
     color: Constants.teal,
   ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: Constants.teal,
+      foregroundColor: Constants.creamyWhite,
+    ),
+  ),
 );

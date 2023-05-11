@@ -5,6 +5,7 @@ import '../utils/constants.dart' as Constants;
 import '../pages/import_page.dart';
 import '../pages/recipes_page.dart';
 import '../pages/timestamps_page.dart';
+import '../pages/recipe_builder_page.dart';
 import '../models/recipe.dart';
 import '../models/recipe_ingredient.dart';
 import '../models/ingredient_prices.dart';
@@ -41,7 +42,11 @@ class _HomePageState extends State<HomePage> {
           selectedPage == 1 ? 
             IconButton(
               onPressed: () {
-                
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const RecipeBuilderPage(),
+                  ),
+                );
               },
               icon: Constants.addRecipeIcon,
             )
