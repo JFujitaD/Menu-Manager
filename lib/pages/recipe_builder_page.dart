@@ -49,6 +49,12 @@ class _RecipeBuilderPageState extends State<RecipeBuilderPage> {
                 decoration: const InputDecoration(
                   helperText: Constants.recipeNameHelperText, 
                 ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter a name for the recipe';
+                  }
+                  return null;
+                },
               ),
               const SizedBox(height: Constants.sizedBoxHeight,),
               buildIngredientsDropdown(),
@@ -57,7 +63,9 @@ class _RecipeBuilderPageState extends State<RecipeBuilderPage> {
               const SizedBox(height: Constants.sizedBoxHeight * 2,),
               ElevatedButton(
                 onPressed: () {
-
+                  if (formKey.currentState!.validate()) {
+                    // Save
+                  }
                 },
                 child: const Text(Constants.recipeSaveButtonText),
               ),
