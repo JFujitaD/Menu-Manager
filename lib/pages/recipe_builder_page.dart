@@ -86,7 +86,13 @@ class _RecipeBuilderPageState extends State<RecipeBuilderPage> {
       hint: const Text(Constants.recipeDropdownHintText),
       onChanged: (value) {
         setState(() {
-          recipeIngredientList.add(RecipeIngredient(value, 1));
+          var recipeIngredient = RecipeIngredient(value, 1);
+
+          if (!recipeIngredientList.any(
+            (ri) => ri.ingredient.name == recipeIngredient.ingredient.name
+          )) {
+            recipeIngredientList.add(recipeIngredient);
+          }
         });
       },
       items: ingredients.map((ingredient) => DropdownMenuItem(
