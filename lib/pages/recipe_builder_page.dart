@@ -124,38 +124,65 @@ class _RecipeBuilderPageState extends State<RecipeBuilderPage> {
               var majorValue = 0;
               var minorValue = 0;
 
-              await showDialog(
+              showDialog(
                 context: context,
                 builder: (context) => AlertDialog(
                   title: Text(
-                    '${Constants.amountSelectorTitle}: '
-                    '$majorValue.$minorValue'
-                    '${recipeIngredient.ingredient.units}',
+                    recipeIngredient.ingredient.name,
                   ),
                   content: StatefulBuilder(
-                    builder: (context, setState) => Row(
+                    builder: (context, setState) => Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        NumberPicker(
-                          minValue: 0,
-                          maxValue: 99,
-                          value: majorValue,
-                          onChanged: (value) {
-                            setState(() => majorValue = value);
-                          },
+                        Row(
+                          children: [
+                            NumberPicker(
+                              minValue: 0,
+                              maxValue: 99,
+                              value: majorValue,
+                              onChanged: (value) {
+                                setState(() => majorValue = value);
+                              },
+                            ),
+                            NumberPicker(
+                              minValue: 0,
+                              maxValue: 9,
+                              value: minorValue,
+                              onChanged: (value) {
+                                setState(() => minorValue = value);
+                              },
+                            ),
+                          ],
                         ),
-                        NumberPicker(
-                          minValue: 0,
-                          maxValue: 9,
-                          value: minorValue,
-                          onChanged: (value) {
-                            setState(() => minorValue = value);
-                          },
+                        const SizedBox(height: Constants.sizedBoxHeight,),
+                        Text(
+                          '${Constants.recipeAmountLabel}: '
+                          '$majorValue.$minorValue '
+                          '${recipeIngredient.ingredient.units}(s)'
                         ),
                       ],
                     ),
                   ),
+                  actions: [
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text(Constants.recipeDialogCancelButtonLabel),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop(
+                          double.parse('$majorValue.$minorValue'),
+                        );
+                      },
+                      child: const Text(Constants.recipeDialogSaveButtonLabel),
+                    ),
+                  ],
                 ),
-              );
+              ).then((value) => setState(() {
+                recipeIngredient.amount = value;
+              },));
             },
             child: CircleAvatar(
               backgroundColor: Constants.purple,

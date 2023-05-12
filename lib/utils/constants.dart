@@ -42,4 +42,6 @@ const recipeSaveButtonText = 'Save New Recipe';
 const recipeDropdownHintText = ' Add Ingredient ';
 const recipeDropdownIcon = Icon(Ionicons.add_circle_outline);
 const recipeDeleteIcon = Icon(Ionicons.remove_circle_outline);
-const amountSelectorTitle = 'Selected Amount';
+const recipeAmountLabel = 'Amount';
+const recipeDialogSaveButtonLabel = 'Save';
+const recipeDialogCancelButtonLabel = 'Cancel';
