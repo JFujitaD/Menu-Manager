@@ -103,8 +103,9 @@ double calculateRecipePrice(IngredientPrices? ingredientPrices, Recipe recipe) {
   double totalPrice = 0;
 
   recipe.ingredients.forEach((recipeIngredient) { 
-    Ingredient matchedIngredient = ingredientPrices!.ingredients.firstWhere(
-      (i) => recipeIngredient.ingredient.name == i.name
+    Ingredient matchedIngredient = ingredientPrices.ingredients.firstWhere(
+      (i) => recipeIngredient.ingredient.name == i.name,
+      orElse: () => Ingredient('NULL', 'NULL', 0.0),
     );
     totalPrice += recipeIngredient.amount * matchedIngredient.price;
   });

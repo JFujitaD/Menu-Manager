@@ -42,7 +42,7 @@ class TimestampDetailsPage extends StatelessWidget {
                 ),
               ),
               trailing: Text(
-                '\$${ingredient.price}',
+                '\$${ingredient.price.toStringAsFixed(2)}',
                 style: textTheme.titleMedium?.copyWith(
                   color: Constants.creamyWhite,
                 ),
