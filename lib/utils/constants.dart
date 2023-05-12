@@ -41,3 +41,4 @@ const recipeNameHelperText = 'Recipe Name';
 const recipeSaveButtonText = 'Save New Recipe';
 const recipeDropdownHintText = ' Add Ingredient ';
 const recipeDropdownIcon = Icon(Ionicons.add_circle_outline);
+const recipeDeleteIcon = Icon(Ionicons.remove_circle_outline);

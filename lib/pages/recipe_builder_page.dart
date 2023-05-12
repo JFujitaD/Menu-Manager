@@ -102,21 +102,35 @@ class _RecipeBuilderPageState extends State<RecipeBuilderPage> {
     );
   }
 
-  List<Card> buildIngredientsList(TextTheme textTheme) => recipeIngredientList.map(
-    (recipeIngredient) => Card(
-      child: ListTile(
-        leading: CircleAvatar(
-          backgroundColor: Constants.purple,
-          foregroundColor: Constants.creamyWhite,
-          child: Text(
-            recipeIngredient.ingredient.units.toUpperCase(),
-            overflow: TextOverflow.ellipsis,
+  List<Dismissible> buildIngredientsList(TextTheme textTheme) => recipeIngredientList.map(
+    (recipeIngredient) => Dismissible(
+      key: ValueKey(recipeIngredient),
+      onDismissed: (direction) {
+        recipeIngredientList.remove(recipeIngredient);
+      },
+      child: Card(
+        child: ListTile(
+          leading: CircleAvatar(
+            backgroundColor: Constants.purple,
+            foregroundColor: Constants.creamyWhite,
+            child: Text(
+              recipeIngredient.ingredient.units.toUpperCase(),
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
-        ),
-        title: Text(
-          recipeIngredient.ingredient.name,
-          style: textTheme.titleMedium?.copyWith(
-            color: Constants.creamyWhite,
+          title: Text(
+            recipeIngredient.ingredient.name,
+            style: textTheme.titleMedium?.copyWith(
+              color: Constants.creamyWhite,
+            ),
+          ),
+          trailing: IconButton(
+            onPressed: () {
+              setState(() {
+                recipeIngredientList.remove(recipeIngredient);
+              });
+            },
+            icon: Constants.recipeDeleteIcon,
           ),
         ),
       ),
