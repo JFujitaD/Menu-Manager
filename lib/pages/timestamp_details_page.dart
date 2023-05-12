@@ -19,6 +19,10 @@ class TimestampDetailsPage extends StatelessWidget {
         title: Text(DateHelper.prettyDate(ingredientPrices.dateTime)),
       ),
       body: ListView.builder(
+        padding: EdgeInsets.symmetric(
+          vertical: Constants.listPadding,
+          horizontal: MediaQuery.of(context).size.width / 4,
+        ),
         itemCount: ingredientPrices.ingredients.length,
         itemBuilder: (context, index) {
           Ingredient ingredient = ingredientPrices.ingredients[index];

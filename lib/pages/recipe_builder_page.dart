@@ -20,11 +20,11 @@ class _RecipeBuilderPageState extends State<RecipeBuilderPage> {
   final recipeBox = Hive.box<Recipe>(Constants.recipeBox);
   final List<RecipeIngredient> recipeIngredientList = [];
   var formKey = GlobalKey<FormState>();
+  final recipeNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final recipeNameController = TextEditingController();
 
     @override
     void dispose() { 
@@ -65,7 +65,8 @@ class _RecipeBuilderPageState extends State<RecipeBuilderPage> {
               ElevatedButton(
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
-                    // Save
+                    Recipe newRecipe = Recipe(recipeNameController.text, recipeIngredientList);
+                    recipeBox.add(newRecipe);
                   }
                 },
                 child: const Text(Constants.recipeSaveButtonText),

@@ -4,6 +4,7 @@ import 'package:hive/hive.dart';
 import '../utils/constants.dart' as Constants;
 import '../models/ingredient_prices.dart';
 import '../utils/date_helper.dart';
+import '../models/recipe.dart';
 
 class RecipesPage extends StatefulWidget {
   const RecipesPage({super.key});
@@ -14,6 +15,7 @@ class RecipesPage extends StatefulWidget {
 
 class _RecipesPageState extends State<RecipesPage> {
   final ingredientPricesBox = Hive.box<IngredientPrices>(Constants.ingredientPricesBox);
+  final recipeBox = Hive.box<Recipe>(Constants.recipeBox);
   IngredientPrices? selectedIngredientPrices;
 
   @override
@@ -28,28 +30,50 @@ class _RecipesPageState extends State<RecipesPage> {
         ),
         child: Column(
           children: [
-            DropdownButton(
-              value: selectedIngredientPrices,
-              icon: Constants.recipeTimestampDropdownIcon,
-              isExpanded: true,
-              dropdownColor: Constants.teal,
-              hint: const Text(Constants.recipeTimestampHintText),
-              onChanged: (value) => setState(() {
-                selectedIngredientPrices = value;
-              }),
-              items: ingredientPricesBox.values.map((ingredientPrices) => DropdownMenuItem(
-                value: ingredientPrices,
-                child: Text(
-                  ' ${DateHelper.prettyDate(ingredientPrices.dateTime)}',
-                  style: textTheme.bodyLarge!.copyWith(
-                    color: ingredientPrices == selectedIngredientPrices ? Constants.purple : Constants.creamyWhite,
-                  ),
-                ),
-              )).toList(),
-            ),
+            buildDropdownButton(textTheme),
+            ...buildRecipeList(textTheme),
           ],
         ),
       ),
     );
   }
+
+  DropdownButton buildDropdownButton(TextTheme textTheme) {
+    return DropdownButton(
+      value: selectedIngredientPrices,
+      icon: Constants.recipeTimestampDropdownIcon,
+      isExpanded: true,
+      dropdownColor: Constants.teal,
+      hint: const Text(Constants.recipeTimestampHintText),
+      onChanged: (value) => setState(() {
+        selectedIngredientPrices = value;
+      }),
+      items: ingredientPricesBox.values.map((ingredientPrices) => DropdownMenuItem(
+        value: ingredientPrices,
+        child: Text(
+          ' ${DateHelper.prettyDate(ingredientPrices.dateTime)}',
+          style: textTheme.bodyLarge!.copyWith(
+            color: ingredientPrices == selectedIngredientPrices ? Constants.purple : Constants.creamyWhite,
+          ),
+        ),
+      )).toList(),
+    );
+  }
+
+  List<Dismissible> buildRecipeList(textTheme) => recipeBox.values.map((recipe) => Dismissible(
+    key: ValueKey(recipe),
+    onDismissed: (direction) {
+      // TODO
+    },
+    child: Card(
+      child: ListTile(
+        title: Text(
+          recipe.name,
+          style: textTheme.titleMedium?.copyWith(
+            color: Constants.creamyWhite,
+          ),
+        ),
+      ),
+    ),
+  )).toList();
 }

@@ -21,7 +21,10 @@ class _TimestampsPageState extends State<TimestampsPage> {
     final textTheme = Theme.of(context).textTheme;
 
     return ListView.builder(
-      padding: const EdgeInsets.symmetric(vertical: Constants.listPadding),
+      padding: EdgeInsets.symmetric(
+        vertical: Constants.listPadding,
+        horizontal: MediaQuery.of(context).size.width / 4,
+      ),
       itemCount: ingredientPricesBox.length,
       itemBuilder: (context, index) {
         IngredientPrices ingredientPrices = ingredientPricesBox.getAt(index)!;
