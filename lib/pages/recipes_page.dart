@@ -65,7 +65,8 @@ class _RecipesPageState extends State<RecipesPage> {
   List<Dismissible> buildRecipeList(textTheme) => recipeBox.values.map((recipe) => Dismissible(
     key: ValueKey(recipe),
     onDismissed: (direction) {
-      // TODO
+      int index = recipeBox.values.toList().indexOf(recipe);
+      recipeBox.deleteAt(index);
     },
     child: Card(
       child: ListTile(
