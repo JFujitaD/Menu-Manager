@@ -25,4 +25,5 @@ final primaryTheme = ThemeData(
       foregroundColor: Constants.creamyWhite,
     ),
   ),
+  dialogBackgroundColor: Constants.creamyWhite,
 );

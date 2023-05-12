@@ -58,7 +58,7 @@ class _RecipeBuilderPageState extends State<RecipeBuilderPage> {
                 },
               ),
               const SizedBox(height: Constants.sizedBoxHeight,),
-              buildIngredientsDropdown(),
+              buildIngredientsDropdown(textTheme),
               const SizedBox(height: Constants.sizedBoxHeight,),
               ...buildIngredientsList(textTheme),
               const SizedBox(height: Constants.sizedBoxHeight * 2,),
@@ -77,7 +77,7 @@ class _RecipeBuilderPageState extends State<RecipeBuilderPage> {
     );
   }
 
-  DropdownButton buildIngredientsDropdown() {
+  DropdownButton buildIngredientsDropdown(TextTheme textTheme) {
     List<Ingredient> ingredients = [];
     List<IngredientPrices> ingredientPrices = ingredientPricesBox.values.toList();
     
@@ -91,6 +91,8 @@ class _RecipeBuilderPageState extends State<RecipeBuilderPage> {
     });
 
     return DropdownButton(
+      dropdownColor: Constants.teal,
+      isExpanded: true,
       icon: Constants.recipeDropdownIcon,
       hint: const Text(Constants.recipeDropdownHintText),
       onChanged: (value) {
@@ -106,7 +108,12 @@ class _RecipeBuilderPageState extends State<RecipeBuilderPage> {
       },
       items: ingredients.map((ingredient) => DropdownMenuItem(
         value: ingredient,
-        child: Text(ingredient.name),
+        child: Text(
+          ingredient.name,
+          style: textTheme.bodyLarge!.copyWith(
+            color: Constants.creamyWhite,
+          ),
+        ),
       )).toList(),
     );
   }
@@ -140,6 +147,10 @@ class _RecipeBuilderPageState extends State<RecipeBuilderPage> {
                               minValue: 0,
                               maxValue: 99,
                               value: majorValue,
+                              selectedTextStyle: const TextStyle(
+                                color: Constants.teal,
+                                fontSize: Constants.numberSelectorSelectedFontSize,
+                              ),
                               onChanged: (value) {
                                 setState(() => majorValue = value);
                               },
@@ -148,6 +159,10 @@ class _RecipeBuilderPageState extends State<RecipeBuilderPage> {
                               minValue: 0,
                               maxValue: 9,
                               value: minorValue,
+                              selectedTextStyle: const TextStyle(
+                                color: Constants.teal,
+                                fontSize: Constants.numberSelectorSelectedFontSize,
+                              ),
                               onChanged: (value) {
                                 setState(() => minorValue = value);
                               },

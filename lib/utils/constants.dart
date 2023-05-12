@@ -45,3 +45,4 @@ const recipeDeleteIcon = Icon(Ionicons.remove_circle_outline);
 const recipeAmountLabel = 'Amount';
 const recipeDialogSaveButtonLabel = 'Save';
 const recipeDialogCancelButtonLabel = 'Cancel';
+const numberSelectorSelectedFontSize = 25.0;
