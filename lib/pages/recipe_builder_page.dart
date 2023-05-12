@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:numberpicker/numberpicker.dart';
 
 import '../utils/constants.dart' as Constants;
 import '../models/ingredient_prices.dart';
@@ -118,12 +119,51 @@ class _RecipeBuilderPageState extends State<RecipeBuilderPage> {
       },
       child: Card(
         child: ListTile(
-          leading: CircleAvatar(
-            backgroundColor: Constants.purple,
-            foregroundColor: Constants.creamyWhite,
-            child: Text(
-              '${recipeIngredient.amount}',
-              overflow: TextOverflow.ellipsis,
+          leading: InkWell(
+            onTap: () async {
+              var majorValue = 0;
+              var minorValue = 0;
+
+              await showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: Text(
+                    '${Constants.amountSelectorTitle}: '
+                    '$majorValue.$minorValue'
+                    '${recipeIngredient.ingredient.units}',
+                  ),
+                  content: StatefulBuilder(
+                    builder: (context, setState) => Row(
+                      children: [
+                        NumberPicker(
+                          minValue: 0,
+                          maxValue: 99,
+                          value: majorValue,
+                          onChanged: (value) {
+                            setState(() => majorValue = value);
+                          },
+                        ),
+                        NumberPicker(
+                          minValue: 0,
+                          maxValue: 9,
+                          value: minorValue,
+                          onChanged: (value) {
+                            setState(() => minorValue = value);
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+            child: CircleAvatar(
+              backgroundColor: Constants.purple,
+              foregroundColor: Constants.creamyWhite,
+              child: Text(
+                '${recipeIngredient.amount}',
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ),
           title: Text(
