@@ -122,7 +122,7 @@ class _RecipeBuilderPageState extends State<RecipeBuilderPage> {
             backgroundColor: Constants.purple,
             foregroundColor: Constants.creamyWhite,
             child: Text(
-              recipeIngredient.ingredient.units.toUpperCase(),
+              '${recipeIngredient.amount}',
               overflow: TextOverflow.ellipsis,
             ),
           ),
@@ -131,6 +131,12 @@ class _RecipeBuilderPageState extends State<RecipeBuilderPage> {
             style: textTheme.titleMedium?.copyWith(
               color: Constants.creamyWhite,
             ),
+          ),
+          subtitle: Text(
+            recipeIngredient.ingredient.units,
+            style: textTheme.bodyMedium?.copyWith(
+                color: Constants.creamyWhite,
+              ),
           ),
           trailing: IconButton(
             onPressed: () {
