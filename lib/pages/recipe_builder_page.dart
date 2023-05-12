@@ -49,6 +49,9 @@ class _RecipeBuilderPageState extends State<RecipeBuilderPage> {
                 controller: recipeNameController,
                 decoration: const InputDecoration(
                   helperText: Constants.recipeNameHelperText, 
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Constants.purple),
+                  ), 
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
