@@ -48,3 +48,5 @@ const recipeAmountLabel = 'Amount';
 const recipeDialogSaveButtonLabel = 'Save';
 const recipeDialogCancelButtonLabel = 'Cancel';
 const numberSelectorSelectedFontSize = 25.0;
+const saveSuccessfulMessage = 'Recipe has been saved';
+const saveFailureMessage = 'Recipe needs a name';

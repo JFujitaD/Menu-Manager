@@ -31,6 +31,7 @@ class _RecipesPageState extends State<RecipesPage> {
         child: Column(
           children: [
             buildDropdownButton(textTheme),
+            const SizedBox(height: Constants.sizedBoxHeight,),
             ...buildRecipeList(textTheme),
           ],
         ),

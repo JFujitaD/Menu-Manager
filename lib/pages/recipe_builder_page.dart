@@ -67,6 +67,15 @@ class _RecipeBuilderPageState extends State<RecipeBuilderPage> {
                   if (formKey.currentState!.validate()) {
                     Recipe newRecipe = Recipe(recipeNameController.text, recipeIngredientList);
                     recipeBox.add(newRecipe);
+
+                    Navigator.of(context).pop();
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text(Constants.saveSuccessfulMessage),
+                    ));
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text(Constants.saveFailureMessage),
+                    ));
                   }
                 },
                 child: const Text(Constants.recipeSaveButtonText),
