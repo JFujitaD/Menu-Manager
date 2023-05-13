@@ -4,7 +4,7 @@ Menu Manager is a cross-platform application for keeping track of ingredient pri
 
 ## Screenshots
 
-![Import Documents Page](/images/import-page.PNG?raw=true)
+![Import Documents Page](/images/import-page.png?raw=true)
 ![Excel Document 1](/images/ingredients-this-month.PNG?raw=true)
 ![Excel Document 2](/images/ingredients-last-year.PNG?raw=true)
 ![Import This Month](/images/import-this-month.PNG?raw=true)
