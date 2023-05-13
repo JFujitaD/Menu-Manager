@@ -52,48 +52,48 @@ class _HomePageState extends State<HomePage> {
             )
             : const SizedBox(),
           // DEBUGGING ONLY
-          IconButton(
-            onPressed: () {
-              hiveBoxes.forEach((key, value) {
-                value.deleteFromDisk();
-              });
-            },
-            icon: const Icon(Icons.warning),
-          ),
+          // IconButton(
+          //   onPressed: () {
+          //     hiveBoxes.forEach((key, value) {
+          //       value.deleteFromDisk();
+          //     });
+          //   },
+          //   icon: const Icon(Icons.warning),
+          // ),
           // DEBUGGING PURPOSES ONLY
-          IconButton(
-            onPressed: () async {
-                      List<Ingredient> ingredients1 = [
-                        Ingredient('Pork Cutlets', 'lbs', 1.50),
-                        Ingredient('Fresh Parsley', 'oz', 0.50),
-                        Ingredient('Seaweed', 'oz', 0.70),
-                        Ingredient('Rice', 'cups', 1.49),
-                      ];
-                      DateTime now1 = DateTime(1999, 2, 14);
-                      IngredientPrices ingredientPrices1 = IngredientPrices(ingredients1, now1);
-                      List<Ingredient> ingredients2 = [
-                        Ingredient('Pork Cutlets', 'lbs', 5.29),
-                        Ingredient('Fresh Parsley', 'oz', 1.73),
-                        Ingredient('Seaweed', 'oz', 1.89),
-                        Ingredient('Rice', 'cups', 3.00),
-                      ];
-                      DateTime now2 = DateTime(2020, 4, 27);
-                      IngredientPrices ingredientPrices2 = IngredientPrices(ingredients2, now2);
-                      List<Ingredient> ingredients3 = [
-                        Ingredient('Pork Cutlets', 'lbs', 8.99),
-                        Ingredient('Fresh Parsley', 'oz', 5.00),
-                        Ingredient('Seaweed', 'oz', 1.99),
-                        Ingredient('Rice', 'cups', 3.99),
-                      ];
-                      DateTime now3 = DateTime(2026, 3, 13);
-                      IngredientPrices ingredientPrices3 = IngredientPrices(ingredients3, now3);
+          // IconButton(
+          //   onPressed: () async {
+          //             List<Ingredient> ingredients1 = [
+          //               Ingredient('Pork Cutlets', 'lbs', 1.50),
+          //               Ingredient('Fresh Parsley', 'oz', 0.50),
+          //               Ingredient('Seaweed', 'oz', 0.70),
+          //               Ingredient('Rice', 'cups', 1.49),
+          //             ];
+          //             DateTime now1 = DateTime(1999, 2, 14);
+          //             IngredientPrices ingredientPrices1 = IngredientPrices(ingredients1, now1);
+          //             List<Ingredient> ingredients2 = [
+          //               Ingredient('Pork Cutlets', 'lbs', 5.29),
+          //               Ingredient('Fresh Parsley', 'oz', 1.73),
+          //               Ingredient('Seaweed', 'oz', 1.89),
+          //               Ingredient('Rice', 'cups', 3.00),
+          //             ];
+          //             DateTime now2 = DateTime(2020, 4, 27);
+          //             IngredientPrices ingredientPrices2 = IngredientPrices(ingredients2, now2);
+          //             List<Ingredient> ingredients3 = [
+          //               Ingredient('Pork Cutlets', 'lbs', 8.99),
+          //               Ingredient('Fresh Parsley', 'oz', 5.00),
+          //               Ingredient('Seaweed', 'oz', 1.99),
+          //               Ingredient('Rice', 'cups', 3.99),
+          //             ];
+          //             DateTime now3 = DateTime(2026, 3, 13);
+          //             IngredientPrices ingredientPrices3 = IngredientPrices(ingredients3, now3);
 
-                      await hiveBoxes['ingredientPrices']?.add(ingredientPrices1);
-                      await hiveBoxes['ingredientPrices']?.add(ingredientPrices2);
-                      await hiveBoxes['ingredientPrices']?.add(ingredientPrices3);
-            },
-            icon: const Icon(Icons.add_business_sharp),
-          ),
+          //             await hiveBoxes['ingredientPrices']?.add(ingredientPrices1);
+          //             await hiveBoxes['ingredientPrices']?.add(ingredientPrices2);
+          //             await hiveBoxes['ingredientPrices']?.add(ingredientPrices3);
+          //   },
+          //   icon: const Icon(Icons.add_business_sharp),
+          // ),
         ],
       ),
       body: navigationPages[selectedPage],
