@@ -33,6 +33,9 @@ const timestampsLabel = 'Timestamps';
 const importIconButton = Icon(Icons.add_chart);
 const importHeadline = 'Import your file here';
 const emptyFileLabel = 'No file chosen';
+const importButtonText = 'Import File';
+const noFileFoundText = 'No file selected';
+const fileImportedText = 'File has been imported';
 
 // Recipes Page
 const recipeAppBarTitle = 'New Recipe';
