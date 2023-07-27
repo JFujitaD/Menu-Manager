@@ -1,4 +1,4 @@
-# Project Title
+# Menu Manager
 
 Menu Manager is a cross-platform application for keeping track of ingredient prices and recipes. Once data is imported into the application, a list of ingredients can be used to create a recipe. The prices for the recipe can be compared acrosss multiple documents, giving the user an easy way to keep track of prices.
 
